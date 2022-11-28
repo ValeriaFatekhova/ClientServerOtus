@@ -13,10 +13,12 @@ class UDPServer:
 class TCPServer:
     def server_run(self, host, port):
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-            s.bind(("127.0.0.1", 8888))
+            s.bind((host, port))
             s.listen(5)
-            client, addr = s.accept()
-            print('Подключено к:', addr)
-            res = client.recv(1024)
-            print("Message: ", res.decode("utf-8"))
-            client.close()
+            while True:
+                client, addr = s.accept()
+                res = client.recv(1024)
+                send_data = {}
+                print(res.decode("utf-8"))
+                client.send(res)
+                client.close()
