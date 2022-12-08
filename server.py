@@ -22,3 +22,6 @@ class TCPServer:
                 print(res.decode("utf-8"))
                 client.send(res)
                 client.close()
+
+server = TCPServer()
+server.server_run("127.0.0.1", 8888)
