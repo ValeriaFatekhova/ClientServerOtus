@@ -15,4 +15,4 @@ class TCPClient:
             print("client: "+s.recv(1024).decode("utf-8"))
 
 client = TCPClient()
-client.client_run("127.0.0.1", 8888)
+client.client_run("127.0.0.1", 8885)

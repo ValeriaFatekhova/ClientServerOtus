@@ -17,11 +17,13 @@ class TCPServer:
             s.listen(5)
             while True:
                 client, addr = s.accept()
-                res = client.recv(1024)
-                send_data = {}
-                print(res.decode("utf-8"))
-                client.send(res)
+                res = client.recv(1024).decode("utf-8")
+                l = res.replace("\r", "").split("\n")
+                answer = ()
+                print(res)
+                print(l)
+                client.send(res.encode())
                 client.close()
 
 server = TCPServer()
-server.server_run("127.0.0.1", 8888)
+server.server_run("127.0.0.1", 8885)
