@@ -18,17 +18,9 @@ class TCPServer:
             while True:
                 client, addr = s.accept()
                 res = self.read_client_data(client)
-                http_response = (
-                    f"HTTP/1.0 200 OK\r\n"
-                    f"Server: otusdemo\r\n"
-                    f"Date: Sat, 01 Oct 2022 09:39:37 GMT\r\n"
-                    f"Content-Type: text/html; charset=UTF-8\r\n"
-                    f"\r\n"
-                )
+                print(self.create_http_responce(res))
 
-                print(res)
-
-                client.send(http_response.encode())
+                client.send(self.create_http_responce(res).encode())
                 client.close()
 
     def read_client_data(self, client):
@@ -47,7 +39,7 @@ class TCPServer:
     def create_http_responce(self, client_data):
         http_response = (
             f"HTTP/1.0 200 OK\r\n"
-            f"Server: otusdemo\r\n"
+            f"Server: otushomework\r\n"
             f"Date: Sat, 01 Oct 2022 09:39:37 GMT\r\n"
             f"Content-Type: text/html; charset=UTF-8\r\n"
             f"\r\n"
