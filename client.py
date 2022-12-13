@@ -12,7 +12,7 @@ class TCPClient:
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             s.connect((host, port))
             s.send(b"TCP Test message")
-
+            print("client: "+s.recv(1024).decode("utf-8"))
 
 client = TCPClient()
-client.client_run("127.0.0.1", 8888)
+client.client_run("127.0.0.1", 8885)
